@@ -1,0 +1,84 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/welcome" />
+
+    <Button
+        android:id="@+id/buttonLP1"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="41dp"
+        android:layout_toLeftOf="@+id/buttonCALC"
+        android:text="@string/load_picture_1" />
+
+    <Button
+        android:id="@+id/buttonLP2"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonIMP1"
+        android:layout_alignParentRight="true"
+        android:text="@string/load_picture_2" />
+
+    <Button
+        android:id="@+id/buttonIMP1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/buttonLP1"
+        android:layout_below="@+id/buttonLP1"
+        android:layout_marginTop="23dp"
+        android:text="@string/load_image_plus_1" />
+
+    <Button
+        android:id="@+id/buttonIMP2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonIMP1"
+        android:layout_alignBottom="@+id/buttonIMP1"
+        android:layout_alignLeft="@+id/buttonLP2"
+        android:layout_alignParentRight="true"
+        android:text="@string/load_image_plus_2" />
+
+    <Button
+        android:id="@+id/buttonCALC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="28dp"
+        android:text="@string/calculate" />
+
+    <Button
+        android:id="@+id/buttonM1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/buttonIMP1"
+        android:layout_below="@+id/buttonIMP1"
+        android:layout_marginTop="37dp"
+        android:text="@string/measure_1" />
+
+    <Button
+        android:id="@+id/buttonM2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonM1"
+        android:layout_alignBottom="@+id/buttonM1"
+        android:layout_alignLeft="@+id/buttonIMP2"
+        android:layout_alignParentRight="true"
+        android:text="@string/measure_2" />
+
+</RelativeLayout>

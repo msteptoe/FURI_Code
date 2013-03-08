@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">IJTest_1</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="load_picture_2">Load Picture 2</string>
+    <string name="welcome">Welcome to ImageJ Mobile!</string>
+    <string name="load_image_plus_1">Load Image Plus 1</string>
+    <string name="load_image_plus_2">Load Image Plus 2</string>
+    <string name="calculate">Calculate!</string>
+    <string name="load_picture_1">Load Picture 1</string>
+    <string name="measure_1">Measure Image 1</string>
+    <string name="measure_2">Measure Image 2</string>
+
+</resources>

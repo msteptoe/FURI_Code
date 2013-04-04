@@ -1,4 +1,4 @@
-package com.original;
+package com.modified;
 
 /*
  * #%L
@@ -46,6 +46,8 @@ import imagej.plugin.Plugin;
 
 import java.util.HashMap;
 
+import com.modified.MyDatasetService;
+
 import net.imglib2.RandomAccess;
 import net.imglib2.img.Img;
 import net.imglib2.img.ImgPlus;
@@ -77,18 +79,12 @@ import net.imglib2.type.numeric.real.DoubleType;
  * 
  * @author Barry DeZonia
  */
-@Plugin(iconPath = "/icons/plugins/calculator.png", menu = {
-	@Menu(label = MenuConstants.PROCESS_LABEL,
-		weight = MenuConstants.PROCESS_WEIGHT,
-		mnemonic = MenuConstants.PROCESS_MNEMONIC),
-	@Menu(label = "Image Calculator...", weight = 22) }, headless = true)
 public class ImageCalc<U extends RealType<U>,V extends RealType<V>>
 {
 	// -- instance variables that are Parameters --
 
-
-	private DatasetService datasetService;
-
+	private MyDatasetService ds;
+	
 	private Dataset input1;
 
 	private Dataset input2;
@@ -142,10 +138,10 @@ public class ImageCalc<U extends RealType<U>,V extends RealType<V>>
 
 	// -- public interface --
 
-	public void initVars(Dataset in1, Dataset in2, DatasetService ds){
+	public void initVars(Dataset in1, Dataset in2, MyDatasetService service ){
 		input1.copyDataFrom(in1);
 		input2.copyDataFrom(in2);
-		datasetService = ds;
+		ds = service;
 	}
 	
 	public Dataset datasetReturner(){
@@ -158,7 +154,7 @@ public class ImageCalc<U extends RealType<U>,V extends RealType<V>>
 	 */
 	public void run() {
 		//initVars(in1, in2, ds);
-		if (operator == null) operator = operators.get(opName);
+		ds = new MyDatasetService();
 		Img<DoubleType> img = null;
 		try {
 			@SuppressWarnings("unchecked")
@@ -167,7 +163,7 @@ public class ImageCalc<U extends RealType<U>,V extends RealType<V>>
 			Img<V> img2 = (Img<V>) input2.getImgPlus();
 			// TODO - limited by ArrayImg size constraints
 			img =
-				ImageCombiner.applyOp(operator, img1, img2, 
+				ImageCombiner.applyOp(operators.get(opName), img1, img2, 
 													new ArrayImgFactory<DoubleType>(), new DoubleType());
 			
 		} catch (IllegalArgumentException e) {
@@ -194,11 +190,11 @@ public class ImageCalc<U extends RealType<U>,V extends RealType<V>>
 			}
 			// TODO : HACK - this next line works but always creates a PlanarImg
 			output =
-				datasetService.create(span, "Result of operation", input1.getAxes(),
+				ds.create(span, "Result of operation", input1.getAxes(),
 					bits, signed, floating);
 			copyDataInto(output.getImgPlus(), img, span);
 			output.update(); // TODO - probably unecessary
-		}
+			}
 	}
 	
 	public Img<DoubleType> opTest(ImgPlus i1, ImgPlus i2) {
@@ -241,6 +237,14 @@ public class ImageCalc<U extends RealType<U>,V extends RealType<V>>
 		this.input2 = input2;
 	}
 
+	public String getOpName() {
+		return opName;
+	}
+
+	public void setOpName(final String opName) {
+		this.opName = opName;
+	}
+	
 	public Dataset getOutput() {
 		return output;
 	}

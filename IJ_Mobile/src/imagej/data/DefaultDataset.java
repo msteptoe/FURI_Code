@@ -77,7 +77,7 @@ import net.imglib2.type.numeric.RealType;
  */
 public class DefaultDataset extends AbstractData implements Dataset {
 
-	private final LogService log;
+	//private final LogService log;
 
 	private ImgPlus<? extends RealType<?>> imgPlus;
 	private boolean rgbMerged;
@@ -87,7 +87,7 @@ public class DefaultDataset extends AbstractData implements Dataset {
 		final ImgPlus<? extends RealType<?>> imgPlus)
 	{
 		super(context);
-		log = context.getService(LogService.class);
+		//log = context.getService(LogService.class);
 		this.imgPlus = imgPlus;
 		rgbMerged = false;
 		isDirty = false;
@@ -193,7 +193,7 @@ public class DefaultDataset extends AbstractData implements Dataset {
 		final Img<? extends RealType<?>> img = imgPlus.getImg();
 		if (!(img instanceof PlanarAccess)) {
 			// cannot set by reference
-			log.error("Cannot set plane for non-planar image");
+			//log.error("Cannot set plane for non-planar image");
 			return false;
 		}
 		// TODO - copy the plane if it cannot be set by reference

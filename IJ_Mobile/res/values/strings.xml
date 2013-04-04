@@ -1,16 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">IJ_Mobile</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="menu_settings">Settings</string>
-    <string name="load_picture_2">Load Picture 2</string>
-    <string name="welcome">Welcome to ImageJ Mobile!</string>
-    <string name="load_image_plus_1">Load Image Plus 1</string>
-    <string name="load_image_plus_2">Load Image Plus 2</string>
-    <string name="calculate">Calculate!</string>
-    <string name="load_picture_1">Load Picture 1</string>
-    <string name="measure_1">Measure Image 1</string>
-    <string name="measure_2">Measure Image 2</string>
+	<string name="app_name">IJ_Mobile</string>
+	<string name="hello_world">Hello world!</string>
+	<string name="menu_settings">Settings</string>
+	<string name="load_picture_2">Load Picture 2</string>
+	<string name="welcome">Welcome to ImageJ Mobile!</string>
+	<string name="select">Please select the type of operation you wish to perform.</string>
+	<string name="load_image_plus_1">Create Dataset 1</string>
+	<string name="load_image_plus_2">Create Dataset 2</string>
+	<string name="calculate">Calculate!</string>
+	<string name="load_picture_1">Load Picture 1</string>
+	<string name="measure_1">Measure Image</string>
+	<string name="measure_v">Measure</string>
+	<string name="image_calculator">Image Calculator</string>
+	<string name="pop">Check for a region of an image</string>
+	<string name="sp">Select Picture</string>
+	<string name="operation">Select Operation</string>
+	<string name="show">Show Image After Completion?</string>
+	<string name="p1">Picture 1</string>
+	<string name="p2">Picture 2</string>
+	<string-array name="operations">
+		<item>Add</item>
+		<item>Subtract</item>
+		<item>Multiply</item>
+		<item>Divide</item>
+		<item>AND</item>
+		<item>OR</item>
+		<item>XOR</item>
+		<item>Min</item>
+		<item>Max</item>
+		<item>Average</item>
+		<item>Difference</item>
+		<item>Copy</item>
+		<item>Transparent-zero</item>
+	</string-array>
+	<string-array name="images">
+		<item>Image 1</item>
+		<item>Image 2</item>
+	</string-array>
+	<color name="red">#FF0000</color>
 
 </resources>

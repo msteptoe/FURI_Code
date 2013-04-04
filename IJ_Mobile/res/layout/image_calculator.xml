@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+   
+    <Button
+        android:id="@+id/buttonLP2"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonLP1"
+        android:layout_alignBottom="@+id/buttonLP1"
+        android:layout_alignParentRight="true"
+        android:text="@string/load_picture_2" />
+
+    <Button
+        android:id="@+id/buttonCALC"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="28dp"
+        android:text="@string/calculate" />
+
+    <Button
+        android:id="@+id/buttonLP1"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="38dp"
+        android:text="@string/load_picture_1" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonLP2"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:id="@+id/operations"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/item1"
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:id="@+id/item1"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonCALC"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="14dp" />
+
+    <Spinner
+        android:id="@+id/item2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/operations" />
+
+    <ImageView
+        android:id="@+id/imgView2"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/buttonLP2"
+        android:contentDescription="@string/p2" />
+
+    <ImageView
+        android:id="@+id/imgView1"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/buttonLP1"
+        android:contentDescription="@string/p1" />
+
+</RelativeLayout>

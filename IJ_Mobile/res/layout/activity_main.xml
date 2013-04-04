@@ -12,73 +12,36 @@
         android:layout_centerHorizontal="true"
         android:text="@string/welcome" />
 
-    <Button
-        android:id="@+id/buttonLP1"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView1"
-        android:layout_marginTop="41dp"
-        android:layout_toLeftOf="@+id/buttonCALC"
-        android:text="@string/load_picture_1" />
-
-    <Button
-        android:id="@+id/buttonLP2"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonIMP1"
-        android:layout_alignParentRight="true"
-        android:text="@string/load_picture_2" />
-
-    <Button
-        android:id="@+id/buttonIMP1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/buttonLP1"
-        android:layout_below="@+id/buttonLP1"
-        android:layout_marginTop="23dp"
-        android:text="@string/load_image_plus_1" />
-
-    <Button
-        android:id="@+id/buttonIMP2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/buttonIMP1"
-        android:layout_alignBottom="@+id/buttonIMP1"
-        android:layout_alignLeft="@+id/buttonLP2"
-        android:layout_alignParentRight="true"
-        android:text="@string/load_image_plus_2" />
-
-    <Button
-        android:id="@+id/buttonCALC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="28dp"
-        android:text="@string/calculate" />
+        android:layout_marginTop="55dp"
+        android:text="@string/select"
+        android:textStyle="bold"
+        android:typeface="normal"
+        android:width="200dp" />
 
     <Button
-        android:id="@+id/buttonM1"
+        android:id="@+id/buttonMV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/buttonIMP1"
-        android:layout_below="@+id/buttonIMP1"
-        android:layout_marginTop="37dp"
-        android:text="@string/measure_1" />
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="140dp"
+        android:text="@string/measure_v" />
 
     <Button
-        android:id="@+id/buttonM2"
+        android:id="@+id/buttonICV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/buttonM1"
-        android:layout_alignBottom="@+id/buttonM1"
-        android:layout_alignLeft="@+id/buttonIMP2"
-        android:layout_alignParentRight="true"
-        android:text="@string/measure_2" />
+        android:layout_alignLeft="@+id/buttonMV"
+        android:layout_alignRight="@+id/buttonMV"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="70dp"
+        android:text="@string/image_calculator" />
 
 </RelativeLayout>

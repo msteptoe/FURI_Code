@@ -38,7 +38,9 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonLP2"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/red"
+        android:textStyle="bold" />
 
     <Spinner
         android:id="@+id/operations"

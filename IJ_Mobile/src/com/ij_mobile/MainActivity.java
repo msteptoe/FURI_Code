@@ -17,7 +17,7 @@ public class MainActivity extends Activity {
 		
 		Button buttonMV = (Button) findViewById(R.id.buttonMV);
 		Button buttonICV = (Button) findViewById(R.id.buttonICV);
-		
+		Button buttonPP = (Button) findViewById(R.id.buttonPP);
 		buttonMV.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View arg0) {
 				Intent intentMeasure = new Intent(MainActivity.this, MeasureActivity.class);
@@ -28,6 +28,12 @@ public class MainActivity extends Activity {
 			public void onClick(View arg0) {
 				Intent intentCalc = new Intent(MainActivity.this, ImageCalcActivity.class);
 				startActivity(intentCalc);
+			}
+		});
+		buttonPP.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View arg0) {
+				Intent intentPlot = new Intent(MainActivity.this, PlotActivity.class);
+				startActivity(intentPlot);
 			}
 		});
 	}

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/imgView"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_above="@+id/buttonP"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:contentDescription="@string/p1" />
+
+    <TextView
+        android:id="@+id/textView0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/red"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonSP"
+        android:layout_centerHorizontal="true"
+        android:text="@string/slor" />
+
+    <Button
+        android:id="@+id/buttonSP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imgView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:text="@string/sp" />
+
+    <Button
+        android:id="@+id/buttonP"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imgView"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="46dp"
+        android:text="@string/p" />
+
+    <Button
+        android:id="@+id/buttonL"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonP"
+        android:layout_alignBottom="@+id/buttonP"
+        android:layout_alignRight="@+id/imgView"
+        android:text="@string/l" />
+
+</RelativeLayout>

@@ -16,10 +16,14 @@
 	<string name="image_calculator">Image Calculator</string>
 	<string name="pop">Check for a region of an image</string>
 	<string name="sp">Select Picture</string>
+	<string name="slor">Select a region of an image:</string>
+	<string name="p">Plot</string>
+	<string name="l">List</string>
 	<string name="operation">Select Operation</string>
 	<string name="show">Show Image After Completion?</string>
 	<string name="p1">Picture 1</string>
 	<string name="p2">Picture 2</string>
+	<string name="plot_profile">Plot Profile</string>
 	<string-array name="operations">
 		<item>Add</item>
 		<item>Subtract</item>

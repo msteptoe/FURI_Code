@@ -105,13 +105,13 @@ public class ImageCalcActivity extends Activity implements OnItemSelectedListene
 				@SuppressWarnings("rawtypes")
 				ImageCalc ic = new ImageCalc();
 				TextView textView1= (TextView) findViewById(R.id.textView1);
-				System.out.println("opImg1: " + opImg1 + " opImg2: " + opImg2 + " op: " + op);
+				//System.out.println("opImg1: " + opImg1 + " opImg2: " + opImg2 + " op: " + op);
 				if(opImg1 != null && opImg1.contains("Image 1")){
 					if(bmpLoc1 !=null)
 						ic.setInput1(ds1);
 					else{
 						textView1.setText("Please select image 1!");
-						System.out.println("opImg1 ds1 null");
+						//System.out.println("opImg1 ds1 null");
 						return;
 					}
 				}
@@ -120,7 +120,7 @@ public class ImageCalcActivity extends Activity implements OnItemSelectedListene
 						ic.setInput1(ds2);
 					else{
 						textView1.setText("Please select image 2!");
-						System.out.println("opImg1 ds2 null");
+						//System.out.println("opImg1 ds2 null");
 						return;
 					}
 				}
@@ -129,7 +129,7 @@ public class ImageCalcActivity extends Activity implements OnItemSelectedListene
 						ic.setInput2(ds1);
 					else{
 						textView1.setText("Please select image 1!");
-						System.out.println("opImg2 ds1 null");
+						//System.out.println("opImg2 ds1 null");
 						return;
 					}
 				}
@@ -138,7 +138,7 @@ public class ImageCalcActivity extends Activity implements OnItemSelectedListene
 						ic.setInput2(ds2);
 					else{
 						textView1.setText("Please select image 2!");
-						System.out.println("opImg2 ds2 null");
+						//System.out.println("opImg2 ds2 null");
 						return;
 					}
 				}
@@ -147,7 +147,7 @@ public class ImageCalcActivity extends Activity implements OnItemSelectedListene
 					ic.setOpName(op);
 				ic.run();
 				imgw.saveImg(f12.getAbsolutePath(), ic.getOutput().getImgPlus());
-				System.out.println("Saved!");
+				//System.out.println("Saved!");
 				Intent intentImageView = new Intent(ImageCalcActivity.this, ImageActivity.class);
 				intentImageView.putExtra("result", op);
 				intentImageView.putExtra("loc", f12.getAbsolutePath());
@@ -159,15 +159,15 @@ public class ImageCalcActivity extends Activity implements OnItemSelectedListene
 			int pos, long id) {
 		if(parent.getTag() == "operations"){
 			op = (String) parent.getItemAtPosition(pos);
-			System.out.println("Testing operation selection: " + op);
+			//System.out.println("Testing operation selection: " + op);
 		}
 		else if(parent.getTag() == "images1"){
 			opImg1 =(String) parent.getItemAtPosition(pos);
-			System.out.println("Img1 selection: " + opImg1);
+			//System.out.println("Img1 selection: " + opImg1);
 		}
 		else{
 			opImg2 =(String) parent.getItemAtPosition(pos);
-			System.out.println("Img2 selection: " + opImg2);
+			//System.out.println("Img2 selection: " + opImg2);
 		}
 	}
 
@@ -193,12 +193,12 @@ public class ImageCalcActivity extends Activity implements OnItemSelectedListene
 			String picturePath = cursor.getString(columnIndex);
 			cursor.close();
 			c= new Convert();
-			System.out.println(picturePath);
+			//System.out.println(picturePath);
 			if(picLoc == 1){
-				System.out.println("Old Path1: " + picLoc1);
+				//System.out.println("Old Path1: " + picLoc1);
 				picLoc1 = picturePath;
 				if (!picLoc1.contains(".bmp")){
-					System.out.println("Creating new BMP!");
+					//System.out.println("Creating new BMP!");
 					bmpLoc1 = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)+ File.separator + "test1.bmp";
 					c.createBMP(picLoc1, bmpLoc1);
 					converted1 = 1;
@@ -209,12 +209,12 @@ public class ImageCalcActivity extends Activity implements OnItemSelectedListene
 				}
 				File f = new File(bmpLoc1);
 				final String source1 = f.getAbsolutePath();
-				System.out.println(source1);
+				//System.out.println(source1);
 				try {
-					System.out.println("Begin");
+					//System.out.println("Begin");
 					//img1 = imgw.createImgPlus(source1);
 					ds1 = imgw.createDs(source1);
-					System.out.println("im thinking success");
+					//System.out.println("im thinking success");
 				} catch (ImgIOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -230,10 +230,10 @@ public class ImageCalcActivity extends Activity implements OnItemSelectedListene
 				bmp.recycle();
 			}
 			else{
-				System.out.println("Old Path2: " + picLoc2);
+				//System.out.println("Old Path2: " + picLoc2);
 				picLoc2 = picturePath;
 				if(!picLoc2.contains(".bmp")){
-					System.out.println("Creating new BMP!");
+					//System.out.println("Creating new BMP!");
 					bmpLoc2 = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)+ File.separator + "test2.bmp";
 					c.createBMP(picLoc2, bmpLoc2);
 					converted2 = 1;
@@ -245,10 +245,10 @@ public class ImageCalcActivity extends Activity implements OnItemSelectedListene
 				File f2 = new File(bmpLoc2);
 				final String source2 = f2.getAbsolutePath();
 				try {
-					System.out.println("Begin");
+					//System.out.println("Begin");
 					//img2 = imgw.createImgPlus(source2);
 					ds2 = imgw.createDs(source2);
-					System.out.println("im thinking success");
+					//System.out.println("im thinking success");
 				} catch (ImgIOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

@@ -91,7 +91,7 @@ public class MeasureActivity extends Activity{
 						Intent.ACTION_PICK,
 						android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 				if(crop == 0) {
-					System.out.println("Not Cropping!");
+					//System.out.println("Not Cropping!");
 				} else {
 					i.setType("image/*");
 					i.putExtra("crop", "true");
@@ -113,7 +113,7 @@ public class MeasureActivity extends Activity{
 					@SuppressWarnings("rawtypes")
 					StatCalculator stc = new StatCalculator(imgFunc, region);
 					measurements[1] = stc.sampleStdDev() +"";
-					System.out.println(measurements[1] + " worked");
+					//System.out.println(measurements[1] + " worked");
 					measurements[2] = (int) stc.min()+"";
 					measurements[3] = (int) stc.max()+"";
 					mean = stc.arithmeticMean();
@@ -131,11 +131,11 @@ public class MeasureActivity extends Activity{
 						if(index != -1 && index+4 < measurements[i].length())
 							measurements[i] = measurements[i].substring(0, index+4);
 					}
-					System.out.println(measurements[10] + " worked");
+					//System.out.println(measurements[10] + " worked");
 					buildTable();
 				}
 				else
-					textView1.setText("Pease Select Image First!");
+					textView1.setText("Pease select an image first!");
 			}
 		});
 
@@ -183,14 +183,14 @@ public class MeasureActivity extends Activity{
 			else{
 				picturePath= Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
 						+ File.separator + TEMP_PHOTO_FILE;
-				System.out.println("path: "+picturePath);
+				//System.out.println("path: "+picturePath);
 			}
 			c= new Convert();
-			System.out.println(picturePath);
-			System.out.println("Old Path1: " + picLoc);
+			//System.out.println(picturePath);
+			//System.out.println("Old Path1: " + picLoc);
 			picLoc = picturePath;
 			if (!picLoc.contains(".bmp")){
-				System.out.println("Creating new BMP!");
+				//System.out.println("Creating new BMP!");
 				bmpLoc = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)+ File.separator + "test1.bmp";
 				c.createBMP(picLoc, bmpLoc);
 				converted = 1;
@@ -211,13 +211,13 @@ public class MeasureActivity extends Activity{
 
 			File f = new File(bmpLoc);
 			final String source = f.getAbsolutePath();
-			System.out.println(source);
+			//System.out.println(source);
 			try {
-				System.out.println("Begin");
+				//System.out.println("Begin");
 				@SuppressWarnings("rawtypes")
 				final ImgWork imgw = new ImgWork();
 				ds1 = imgw.createDs(source);
-				System.out.println("im thinking success");
+				//System.out.println("im thinking success");
 			} catch (ImgIOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

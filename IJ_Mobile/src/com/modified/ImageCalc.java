@@ -1,5 +1,3 @@
-package com.modified;
-
 /*
  * #%L
  * ImageJ software for multidimensional image processing and analysis.
@@ -34,16 +32,10 @@ package com.modified;
  * policies, either expressed or implied, of any organization.
  * #L%
  */
-import imagej.Cancelable;
-import imagej.command.ContextCommand;
-import imagej.data.Dataset;
-import imagej.data.DatasetService;
-import imagej.menu.MenuConstants;
-import imagej.module.ItemIO;
-import imagej.plugin.Menu;
-import imagej.plugin.Parameter;
-import imagej.plugin.Plugin;
 
+package com.modified;
+
+import imagej.data.Dataset;
 import java.util.HashMap;
 
 import com.modified.MyDatasetService;

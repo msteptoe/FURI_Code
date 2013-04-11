@@ -24,10 +24,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="MeasureActivity" ></activity>
-		<activity android:name="ImageCalcActivity" ></activity>
-		<activity android:name="ImageActivity" ></activity>
-		<activity android:name="DataActivity" ></activity>
+        <activity android:name="MeasureActivity"
+            android:screenOrientation="portrait"
+			android:configChanges="keyboardHidden|orientation|screenSize" ></activity>
+		<activity android:name="ImageCalcActivity"
+		    android:screenOrientation="portrait"
+			android:configChanges="keyboardHidden|orientation|screenSize" ></activity>
+		<activity android:name="ImageActivity"
+		    android:screenOrientation="portrait"
+			android:configChanges="keyboardHidden|orientation|screenSize" ></activity>
+		<activity android:name="DataActivity"
+		    android:screenOrientation="portrait"
+			android:configChanges="keyboardHidden|orientation|screenSize" ></activity>
+		<activity android:name="PlotActivity"
+		    android:screenOrientation="portrait"
+			android:configChanges="keyboardHidden|orientation|screenSize" ></activity>
+		<activity android:name="GraphActivity" ></activity>
+		<activity android:name="ListActivity" ></activity>
     </application>
 
 </manifest>

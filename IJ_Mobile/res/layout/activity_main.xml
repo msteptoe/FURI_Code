@@ -44,4 +44,14 @@
         android:layout_marginTop="70dp"
         android:text="@string/image_calculator" />
 
+    <Button
+        android:id="@+id/buttonPP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonMV"
+        android:layout_alignRight="@+id/buttonMV"
+        android:layout_below="@+id/buttonMV"
+        android:layout_marginTop="25dp"
+        android:text="@string/plot_profile" />
+
 </RelativeLayout>

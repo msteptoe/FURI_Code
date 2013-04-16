@@ -19,31 +19,33 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
+        public static final int icon=0x7f020001;
     }
     public static final class id {
-        public static final int RelativeLayout1=0x7f090012;
+        public static final int RelativeLayout1=0x7f090013;
         public static final int buttonCALC=0x7f090007;
         public static final int buttonICV=0x7f090003;
-        public static final int buttonL=0x7f090016;
+        public static final int buttonL=0x7f090017;
         public static final int buttonLP1=0x7f090006;
         public static final int buttonLP2=0x7f090005;
         public static final int buttonM1=0x7f090011;
         public static final int buttonMV=0x7f090002;
-        public static final int buttonP=0x7f090013;
+        public static final int buttonP=0x7f090014;
         public static final int buttonPP=0x7f090004;
-        public static final int buttonSP=0x7f090015;
+        public static final int buttonS=0x7f090012;
+        public static final int buttonSP=0x7f090016;
         public static final int buttonSP1=0x7f090010;
-        public static final int chart=0x7f090017;
+        public static final int chart=0x7f090018;
         public static final int cropBox=0x7f09000f;
         public static final int imgView=0x7f09000d;
         public static final int imgView1=0x7f09000c;
         public static final int imgView2=0x7f09000b;
         public static final int item1=0x7f090009;
         public static final int item2=0x7f09000a;
-        public static final int menu_settings=0x7f090018;
+        public static final int menu_settings=0x7f090019;
         public static final int operations=0x7f090008;
         public static final int table=0x7f09000e;
-        public static final int textView0=0x7f090014;
+        public static final int textView0=0x7f090015;
         public static final int textView1=0x7f090000;
         public static final int textView2=0x7f090001;
     }
@@ -63,8 +65,8 @@ public final class R {
         public static final int app_name=0x7f040000;
         public static final int calculate=0x7f040008;
         public static final int hello_world=0x7f040001;
-        public static final int image_calculator=0x7f04000c;
-        public static final int l=0x7f040011;
+        public static final int image_calculator=0x7f04000d;
+        public static final int l=0x7f040012;
         public static final int load_image_plus_1=0x7f040006;
         public static final int load_image_plus_2=0x7f040007;
         public static final int load_picture_1=0x7f040009;
@@ -72,16 +74,17 @@ public final class R {
         public static final int measure_1=0x7f04000a;
         public static final int measure_v=0x7f04000b;
         public static final int menu_settings=0x7f040002;
-        public static final int operation=0x7f040012;
-        public static final int p=0x7f040010;
-        public static final int p1=0x7f040014;
-        public static final int p2=0x7f040015;
-        public static final int plot_profile=0x7f040016;
-        public static final int pop=0x7f04000d;
+        public static final int operation=0x7f040013;
+        public static final int p=0x7f040011;
+        public static final int p1=0x7f040015;
+        public static final int p2=0x7f040016;
+        public static final int plot_profile=0x7f040017;
+        public static final int pop=0x7f04000e;
+        public static final int save=0x7f04000c;
         public static final int select=0x7f040005;
-        public static final int show=0x7f040013;
-        public static final int slor=0x7f04000f;
-        public static final int sp=0x7f04000e;
+        public static final int show=0x7f040014;
+        public static final int slor=0x7f040010;
+        public static final int sp=0x7f04000f;
         public static final int welcome=0x7f040004;
     }
     public static final class style {

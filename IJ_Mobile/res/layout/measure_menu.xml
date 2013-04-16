@@ -37,15 +37,6 @@
         android:layout_marginTop="20dp"
         android:contentDescription="@string/p1" />
 
-    <Button
-        android:id="@+id/buttonM1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imgView"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="49dp"
-        android:text="@string/measure_1" />
-
     <TableLayout
         android:id="@+id/table"
         android:layout_width="300dp"
@@ -77,5 +68,23 @@
             android:layout_height="wrap_content" >
         </TableRow> -->
     </TableLayout>
+
+    <Button
+        android:id="@+id/buttonM1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonS"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="20dp"
+        android:text="@string/measure_1" />
+
+    <Button
+        android:id="@+id/buttonS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/table"
+        android:layout_alignLeft="@+id/buttonM1"
+        android:layout_alignParentRight="true"
+        android:text="@string/save" />
 
 </RelativeLayout>

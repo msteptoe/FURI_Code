@@ -13,6 +13,7 @@
 	<string name="load_picture_1">Load Picture 1</string>
 	<string name="measure_1">Measure Image</string>
 	<string name="measure_v">Measure</string>
+	<string name="save">Save Data</string>
 	<string name="image_calculator">Image Calculator</string>
 	<string name="pop">Check for a region of an image</string>
 	<string name="sp">Select Picture</string>

@@ -3,7 +3,10 @@ package com.ij_mobile;
 import imagej.data.Dataset;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import com.modified.Statistics;
 import net.imglib2.exception.IncompatibleTypeException;
@@ -42,7 +45,9 @@ public class MeasureActivity extends Activity{
 	private static int RESULT_LOAD_IMAGE = 1;
 	protected int crop, converted, intDen, area;
 	double mean;
+	private boolean table;
 	private String [] measurements;
+	private String [] str;
 	@SuppressWarnings("rawtypes") ImgPlus img1;
 	Dataset ds1;
 	protected String picLoc, bmpLoc;
@@ -54,8 +59,10 @@ public class MeasureActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.measure_menu);
 		measurements = new String[11];
+		table = false;
 
 		Button buttonM1 = (Button) findViewById(R.id.buttonM1);
+		Button buttonS = (Button) findViewById(R.id.buttonS);
 		final Button buttonLoadImage1 = (Button) findViewById(R.id.buttonSP1);
 		final CheckBox cropBox = (CheckBox) findViewById(R.id.cropBox);
 		final TextView textView1= (TextView) findViewById(R.id.textView1);
@@ -97,6 +104,7 @@ public class MeasureActivity extends Activity{
 					i.putExtra("crop", "true");
 					i.putExtra(MediaStore.EXTRA_OUTPUT, getTempUri());
 					i.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
+					//i.putExtra("circleCrop", "true");
 				}
 				startActivityForResult(i, RESULT_LOAD_IMAGE);
 			}
@@ -135,11 +143,48 @@ public class MeasureActivity extends Activity{
 					buildTable();
 				}
 				else
-					textView1.setText("Pease select an image first!");
+					textView1.setText("Please select an image first!");
 			}
 		});
 
+		buttonS.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				if(table){
+					int sc = 0;
+					String format = "yyyyMMdd_HHmmss";
+					SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.US);
+					File directory = new File(Environment.getExternalStorageDirectory()+ File.separator + "ImageJ" + File.separator+ "Measure" + File.separator);
+					directory.mkdirs();
+					File outputFile = new File(directory, "Results_" +sdf.format(System.currentTimeMillis()) + ".txt"); 
+					//System.out.println("Saving to: "+outputFile);
+					FileWriter out = null;
+					try {
+						out = new FileWriter(outputFile);
+						for(int i=0; i<measurements.length; i++){
+							out.write(str[sc] +" ");
+							if(i <5 || i>8)
+								out.write(measurements[i]+"\n");
+							else
+								out.write(measurements[i]+", " + measurements[++i] + "\n");
+							sc++;
+						}
+						if (out != null) {
+						       out.close();
+						       textView1.setText("Location: " + outputFile);
+						     }
+						
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				else
+					textView1.setText("Please measure an image first!");
+			}
+		});
 	}
+
 
 	private Uri getTempUri() {
 		return Uri.fromFile(getTempFile());
@@ -232,7 +277,8 @@ public class MeasureActivity extends Activity{
 		}
 	}
 	public void buildTable(){
-		String [] str = {"Area: ", "StdDev: ", "Min: ", "Max: ", "Mean: ","Centeroid(X,Y): ", "Center of Mass(XM,YM): ", "Integrated Density: ", "Median: "};
+		str =  new String []{"Area: ", "StdDev: ", "Min: ", "Max: ", "Mean: ","Centeroid(X,Y): ", "Center of Mass(XM,YM): ", "Integrated Density: ", "Median: "};
+		table = true;
 		TableLayout tv=(TableLayout) findViewById(R.id.table);
 		tv.removeAllViewsInLayout();
 		int sc =0;

@@ -1,7 +1,5 @@
 package com.ij_mobile;
 
-import java.io.File;
-
 import android.app.Activity;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -25,9 +23,9 @@ public class ImageActivity extends Activity {
 		}
 	
 		TextView textView1= (TextView) findViewById(R.id.textView1);
-		//TextView textView2= (TextView) findViewById(R.id.textView2);
+		TextView textView2= (TextView) findViewById(R.id.textView2);
 		textView1.setText("Result of " + op + " operation!");
-		//textView2.setText("Location: " + f);
+		textView2.setText("Location: " + f);
 		
 		ImageView imageView = (ImageView) findViewById(R.id.imgView);
         imageView.setImageBitmap(BitmapFactory.decodeFile(f));

@@ -50,6 +50,14 @@
         android:text="@string/p" />
 
     <Button
+        android:id="@+id/buttonS"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/save" />
+
+    <Button
         android:id="@+id/buttonL"
         android:layout_width="100dp"
         android:layout_height="wrap_content"

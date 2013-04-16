@@ -1,6 +1,9 @@
 package com.ij_mobile;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import imagej.data.Dataset;
 import net.imglib2.exception.IncompatibleTypeException;
@@ -142,15 +145,19 @@ public class ImageCalcActivity extends Activity implements OnItemSelectedListene
 						return;
 					}
 				}
-				File f12 = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)+ File.separator + op +".png");
+				String format = "yyyyMMdd_HHmmss";
+				SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.US);
+				File directory = new File(Environment.getExternalStorageDirectory()+ File.separator + "ImageJ" + File.separator+ "ImgCalc" + File.separator);
+				directory.mkdirs();
+				File outputFile = new File(directory, op + "_" +sdf.format(System.currentTimeMillis()) + ".png"); 
 				if(op != null)
 					ic.setOpName(op);
 				ic.run();
-				imgw.saveImg(f12.getAbsolutePath(), ic.getOutput().getImgPlus());
+				imgw.saveImg(outputFile.getAbsolutePath(), ic.getOutput().getImgPlus());
 				//System.out.println("Saved!");
 				Intent intentImageView = new Intent(ImageCalcActivity.this, ImageActivity.class);
 				intentImageView.putExtra("result", op);
-				intentImageView.putExtra("loc", f12.getAbsolutePath());
+				intentImageView.putExtra("loc", outputFile.getAbsolutePath());
 				startActivity(intentImageView);
 			}
 		});

@@ -1,7 +1,10 @@
 package com.ij_mobile;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -32,6 +35,7 @@ public class PlotActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.plot_profile);
 		Button buttonSP = (Button) findViewById(R.id.buttonSP);
+		Button buttonS = (Button) findViewById(R.id.buttonS);
 		Button buttonP = (Button) findViewById(R.id.buttonP);
 		Button buttonL = (Button) findViewById(R.id.buttonL);
 		final TextView textView0 = (TextView) findViewById(R.id.textView0);
@@ -78,7 +82,7 @@ public class PlotActivity extends Activity{
 					startActivity(intentGraphView);
 				}
 				else
-					textView0.setText("Pease select an image first!");
+					textView0.setText("Please select an image first!");
 			}
 		});
 		
@@ -109,7 +113,51 @@ public class PlotActivity extends Activity{
 					startActivity(intentListView);
 				}
 				else
-					textView0.setText("Pease select an image first!");
+					textView0.setText("Please select an image first!");
+			}
+		});
+		
+		buttonS.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				if(bmp != null){ 
+					if(bmpGrayscale == null){
+						bmpGrayscale = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+						Canvas c = new Canvas(bmpGrayscale);
+						Paint paint = new Paint();
+						ColorMatrix cm = new ColorMatrix();
+						cm.setSaturation(0);
+						ColorMatrixColorFilter f = new ColorMatrixColorFilter(cm);
+						paint.setColorFilter(f);
+						c.drawBitmap(bmp, 0, 0, paint); 
+						gray = getColumnAverageProfile();
+					}
+					String format = "yyyyMMdd_HHmmss";
+					SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.US);
+					File directory = new File(Environment.getExternalStorageDirectory()+ File.separator + "ImageJ" + File.separator+ "PlotProfile" + File.separator);
+					directory.mkdirs();
+					File outputFile = new File(directory, "Results_" +sdf.format(System.currentTimeMillis()) + ".txt"); 
+					//System.out.println("Saving to: "+outputFile);
+					FileWriter out = null;
+					try {
+						String tab = "\t\t";
+						out = new FileWriter(outputFile);
+						out.write("X"+ tab + "Y\n");
+						for(int i=0; i<gray.length; i++)
+							out.write(i+1 + tab + gray[i] + "\n");
+						if (out != null) {
+						       out.close();
+						       textView0.setText("Location: " + outputFile);
+						     }
+						
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				
+				}
+				else
+					textView0.setText("Please select an image first!");
 			}
 		});
 

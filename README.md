@@ -4,7 +4,19 @@ FURI_Code
 ImageJ Mobile
 
 IJ_Mobile is fully working android project. Features are limited to ImageCalculator, PlotProfile, and Measure.
-ImageCalculator and Measure are based upon ImageJ2's code.Image I/O is handled by Bio-Formats and stbi. AChartEngine is used to plot data for PlotProfile.
+ImageCalculator and Measure are based upon ImageJ2's code.Image I/O is handled by Bio-Formats and stbi. AChartEngine is used to plot data for PlotProfile.No native services from ImageJ2 available.
+GraphActivity.java:	Graphs data sent from PlotActivity
+ImageActivity.java:	Shows result of ImageCalcActivity
+ImageCalcActivity.java:	Process/Image Calculator activity implemented here
+ListActivity.java:	Displays a scrollable list of data points from PlotActivity
+MainActivity.java:	Home screen to pick operation
+MeasureActivity.java:	Analyze/Measure activity implemented here
+PlotActivity.java:	Analyze/Plot Profile activity/function implemented here
+ImageCalc.java:		Process/Image Calculator activity implemented here, same as found in ImageJ2 with exception of function to set operand string.
+MyDatasetService.java:	May No longer be necessary. Same as defaultDatasetService except context is always set to null and no logging.
+Statistics.java:	Same as statistics from ImgLib and ImageJ2, slight changes.
+Convert.java:		stbi library load createBMP, uses JNI.
+ImgWork.java:		Can create Img, ImgPlus, and Dataset objects since services are unavailable, as well as save images as using ImgSaver.
 
 
 ijExtract contains java files extracted from ImageJ2 and ImgLib2 that do not contain java.awt class.

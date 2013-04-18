@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
-import com.modified.Statistics;
 import net.imglib2.exception.IncompatibleTypeException;
 import net.imglib2.img.ImgPlus;
 import net.imglib2.io.ImgIOException;
@@ -18,6 +17,7 @@ import net.imglib2.ops.pointset.HyperVolumePointSet;
 import net.imglib2.ops.pointset.PointSet;
 import net.imglib2.type.numeric.real.DoubleType;
 
+import com.modified.Statistics;
 import com.original.Convert;
 import com.original.ImgWork;
 

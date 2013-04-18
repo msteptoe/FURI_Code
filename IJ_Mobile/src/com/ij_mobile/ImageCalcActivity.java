@@ -2,7 +2,6 @@ package com.ij_mobile;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 import imagej.data.Dataset;

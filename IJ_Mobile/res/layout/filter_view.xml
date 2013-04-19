@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/buttonLP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:text="@string/sp" />
+
+    <Spinner
+        android:id="@+id/colors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/buttonA"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/buttonA"
+        android:layout_toLeftOf="@+id/buttonLP" />
+
+    <Button
+        android:id="@+id/buttonA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonLP"
+        android:layout_alignRight="@+id/buttonLP"
+        android:layout_below="@+id/buttonLP"
+        android:layout_marginTop="35dp"
+        android:text="@string/apply" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonLP"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/red"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/buttonS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonA"
+        android:layout_alignBottom="@+id/buttonA"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/buttonA"
+        android:text="@string/s" />
+
+</RelativeLayout>

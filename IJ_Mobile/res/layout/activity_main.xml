@@ -31,7 +31,7 @@
         android:layout_alignLeft="@+id/textView1"
         android:layout_alignRight="@+id/textView1"
         android:layout_below="@+id/textView2"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="100dp"
         android:text="@string/measure_v" />
 
     <Button
@@ -41,7 +41,7 @@
         android:layout_alignLeft="@+id/buttonMV"
         android:layout_alignRight="@+id/buttonMV"
         android:layout_below="@+id/textView2"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="35dp"
         android:text="@string/image_calculator" />
 
     <Button
@@ -51,7 +51,17 @@
         android:layout_alignLeft="@+id/buttonMV"
         android:layout_alignRight="@+id/buttonMV"
         android:layout_below="@+id/buttonMV"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:text="@string/plot_profile" />
+
+    <Button
+        android:id="@+id/buttonF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonPP"
+        android:layout_alignRight="@+id/buttonPP"
+        android:layout_below="@+id/buttonPP"
+        android:layout_marginTop="20dp"
+        android:text="@string/filter" />
 
 </RelativeLayout>

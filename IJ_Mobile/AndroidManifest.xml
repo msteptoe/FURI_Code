@@ -39,6 +39,9 @@
 		<activity android:name="PlotActivity"
 		    android:screenOrientation="portrait"
 			android:configChanges="keyboardHidden|orientation|screenSize" ></activity>
+		<activity android:name="FilterActivity"
+            android:screenOrientation="portrait"
+			android:configChanges="keyboardHidden|orientation|screenSize" ></activity>
 		<activity android:name="GraphActivity" ></activity>
 		<activity android:name="ListActivity" ></activity>
     </application>

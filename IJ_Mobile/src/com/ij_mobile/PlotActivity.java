@@ -65,6 +65,7 @@ public class PlotActivity extends Activity{
 	private int width, height;
 	private double[] gray;
 	private Bitmap bmp, bmpGrayscale;
+	private boolean grayValid;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -126,7 +127,7 @@ public class PlotActivity extends Activity{
 			@Override
 			public void onClick(View arg0) {
 				if(bmp != null){ 
-					if(bmpGrayscale == null){
+					if(!grayValid){
 						bmpGrayscale = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
 						Canvas c = new Canvas(bmpGrayscale);
 						Paint paint = new Paint();
@@ -134,7 +135,8 @@ public class PlotActivity extends Activity{
 						cm.setSaturation(0);
 						ColorMatrixColorFilter f = new ColorMatrixColorFilter(cm);
 						paint.setColorFilter(f);
-						c.drawBitmap(bmp, 0, 0, paint); 
+						c.drawBitmap(bmp, 0, 0, paint);
+						grayValid = true;
 						/*bmp.recycle();
 						ImageView imageView = (ImageView) findViewById(R.id.imgView);
 						if(height > 1500 || width > 1500)
@@ -156,7 +158,7 @@ public class PlotActivity extends Activity{
 			@Override
 			public void onClick(View arg0) {
 				if(bmp != null){ 
-					if(bmpGrayscale == null){
+					if(!grayValid){
 						bmpGrayscale = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
 						Canvas c = new Canvas(bmpGrayscale);
 						Paint paint = new Paint();
@@ -164,7 +166,8 @@ public class PlotActivity extends Activity{
 						cm.setSaturation(0);
 						ColorMatrixColorFilter f = new ColorMatrixColorFilter(cm);
 						paint.setColorFilter(f);
-						c.drawBitmap(bmp, 0, 0, paint); 
+						c.drawBitmap(bmp, 0, 0, paint);
+						grayValid = true;
 						gray = getColumnAverageProfile();
 					}
 					String format = "yyyyMMdd_HHmmss";
@@ -253,8 +256,10 @@ public class PlotActivity extends Activity{
 				imageView.setImageBitmap(bmp);
 			if (tempFile.exists()) 
 				tempFile.delete();
-			if(bmpGrayscale !=null)
+			if(grayValid){
 				bmpGrayscale.recycle();
+				grayValid = false;
+			}
 		}
 	}
 	

@@ -25,6 +25,9 @@
 	<string name="p1">Picture 1</string>
 	<string name="p2">Picture 2</string>
 	<string name="plot_profile">Plot Profile</string>
+	<string name="filter">Filter</string>
+	<string name="apply">Apply Filter</string>
+	<string name="s">Save</string>
 	<string-array name="operations">
 		<item>Add</item>
 		<item>Subtract</item>
@@ -43,6 +46,11 @@
 	<string-array name="images">
 		<item>Image 1</item>
 		<item>Image 2</item>
+	</string-array>
+	<string-array name="colors">
+		<item>Red</item>
+		<item>Green</item>
+		<item>Blue</item>
 	</string-array>
 	<color name="red">#FF0000</color>
 

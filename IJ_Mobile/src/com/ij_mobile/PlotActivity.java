@@ -96,7 +96,7 @@ public class PlotActivity extends Activity{
 			@Override
 			public void onClick(View arg0) {
 				if(bmp != null){ 
-					if(bmpGrayscale == null){
+					if(!grayValid){
 						bmpGrayscale = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
 						Canvas c = new Canvas(bmpGrayscale);
 						Paint paint = new Paint();
@@ -222,6 +222,7 @@ public class PlotActivity extends Activity{
 
 	public int getLastBytes(long original) {
 		String hexBytes = Long.toHexString(original);
+		//Log.v("BYTE", "HexBytes: " + hexBytes);
 		return Integer.parseInt(hexBytes.substring(hexBytes.length()-2),16);
 	}
 

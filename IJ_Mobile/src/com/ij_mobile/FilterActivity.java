@@ -16,6 +16,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -29,10 +30,11 @@ public class FilterActivity extends Activity implements OnItemSelectedListener{
 
 	private String color, colorP, picturePath, filename;
 	private static int RESULT_LOAD_IMAGE = 1;
-	private int width, height;
+	private int width, height, channel;
 	private Bitmap bmp, bmpFil, bmpGrayscale;
 	private boolean bmpValid, grayValid;
 	private float[] colorMatrix;
+	private static final String TAG = "ScaleChannel";
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -75,7 +77,7 @@ public class FilterActivity extends Activity implements OnItemSelectedListener{
 			@Override
 			public void onClick(View arg0) {
 				if(bmpValid || grayValid){
-					if(!grayValid){
+					/*if(!grayValid){
 						bmpGrayscale = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
 						Canvas cG = new Canvas(bmpGrayscale);
 						Paint paintG = new Paint();
@@ -87,12 +89,10 @@ public class FilterActivity extends Activity implements OnItemSelectedListener{
 						bmp.recycle();
 						bmpValid = false;
 						grayValid = true;
-					}
+					}*/
 					bmpFil = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
 					Canvas c = new Canvas(bmpFil);
 					Paint paint = new Paint();
-					
-
 					if(color.equals("Red")){
 						float [] red = { 
 								1, 0, 0, 0, 0, //red
@@ -100,6 +100,7 @@ public class FilterActivity extends Activity implements OnItemSelectedListener{
 								0, 0, 0, 0, 0, //blue
 								0, 0, 0, 1, 0 //alpha  
 						};
+						channel = 1;
 						colorMatrix = red;
 					}
 					else if(color.equals("Green")){
@@ -109,6 +110,7 @@ public class FilterActivity extends Activity implements OnItemSelectedListener{
 								0, 0, 0, 0, 0, //blue
 								0, 0, 0, 1, 0 //alpha  
 						};
+						channel = 2;
 						colorMatrix = green;
 					}
 					else{
@@ -118,14 +120,18 @@ public class FilterActivity extends Activity implements OnItemSelectedListener{
 								0, 0, 1, 0, 0, //blue
 								0, 0, 0, 1, 0 //alpha  
 						};
+						channel = 3;
 						colorMatrix = blue;
 					}
 					colorP = color;
 					ColorMatrixColorFilter filter = new ColorMatrixColorFilter(colorMatrix);
 					paint.setColorFilter(filter);
-					c.drawBitmap(bmpGrayscale, 0, 0, paint);
+					//c.drawBitmap(bmpGrayscale, 0, 0, paint);
+					c.drawBitmap(bmp, 0, 0, paint);
+					scaleChannel(bmpFil);
 					ImageView imageView = (ImageView) findViewById(R.id.imageView);
 					imageView.setImageBitmap(Bitmap.createScaledBitmap(bmpFil, 1500, 1500, false));
+					grayValid = true;
 				}
 				else{
 					TextView textView= (TextView) findViewById(R.id.textView);
@@ -149,7 +155,7 @@ public class FilterActivity extends Activity implements OnItemSelectedListener{
 						File outputFile = new File(directory, filename+"_"+colorP+".png");
 						FileOutputStream out = new FileOutputStream(outputFile);
 						//System.out.println("Image Save: "+outputFile.getAbsolutePath());
-						bmpFil.compress(Bitmap.CompressFormat.PNG, 90, out);
+						bmpFil.compress(Bitmap.CompressFormat.PNG, 100, out);
 						textView.setText("Saved to: " + outputFile.getAbsolutePath());
 					} 
 					catch (Exception e) {
@@ -166,7 +172,7 @@ public class FilterActivity extends Activity implements OnItemSelectedListener{
 						File outputFile = new File(directory, filename+"_OG"+".png");
 						FileOutputStream out = new FileOutputStream(outputFile);
 						//System.out.println("Image Save: "+outputFile.getAbsolutePath());
-						bmp.compress(Bitmap.CompressFormat.PNG, 90, out);
+						bmp.compress(Bitmap.CompressFormat.PNG, 100, out);
 						textView.setText("Saved to: " + outputFile.getAbsolutePath());
 					} 
 					catch (Exception e) {
@@ -217,13 +223,59 @@ public class FilterActivity extends Activity implements OnItemSelectedListener{
 			imageView.setImageBitmap(Bitmap.createScaledBitmap(bmp, 1500, 1500, false));
 			width = bmp.getWidth();
 			height = bmp.getHeight();
+			Log.v(TAG, "original Values begin");
+			scaleChannel(bmp);
+			Log.v(TAG, "original Values end");
 			bmpValid = true;
 			if(grayValid){
-				bmpGrayscale.recycle();
+				//bmpGrayscale.recycle();
 				bmpFil.recycle();
 				grayValid = false;
 			}
 			//bmp.recycle();
 		}
 	}
+	private int getBytes(int original) {
+		String hexBytes = Integer.toHexString(original);
+		//String hexBytes = Long.toHexString(original);
+		Log.v(TAG, "HexBytes: " + hexBytes);
+		int hex=0;
+		switch (channel){
+		case 1:
+			hex = Integer.parseInt(hexBytes.substring(hexBytes.length()-6,hexBytes.length()-4),16);
+			//Log.v(TAG, "Red Values: " + hex);
+			break;
+		case 2:
+			hex = Integer.parseInt(hexBytes.substring(hexBytes.length()-2),16);
+			//Log.v(TAG, "Green Values: " + hex);
+			break;
+		case 3:
+			hex = Integer.parseInt(hexBytes.substring(hexBytes.length()-2),16);
+			//Log.v(TAG, "Blue Values: " + hex);
+			break;
+		default:
+			hex = Integer.parseInt(hexBytes.substring(hexBytes.length()-2),16);
+			//Log.v(TAG, "Blue Values: " + hex);
+			break;
+		}
+		
+		return hex;
+	}
+	
+	private void scaleChannel(Bitmap bmpSc) {
+		int max = 0;
+		int pix = 0;
+		for (int i = 0; i < height; i++) {
+			for (int j = 0; j < width; j++) {
+				//profile[j] += getLastBytes(bmpGrayscale.getPixel(j, i));
+				//counts[j]++;
+				//bmpGrayscale.setPixel(j, i, 0);
+				pix = getBytes(bmpSc.getPixel(j, i));
+				//Log.v(TAG, "Pixel=" + pix);
+				if (max < pix)
+					max = pix;
+			}
+		}
+		System.out.println("Max Pixel Color is " + max);
+	}	
 }

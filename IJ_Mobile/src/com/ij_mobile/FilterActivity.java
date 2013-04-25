@@ -9,14 +9,12 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -31,10 +29,10 @@ public class FilterActivity extends Activity implements OnItemSelectedListener{
 	private String color, colorP, picturePath, filename;
 	private static int RESULT_LOAD_IMAGE = 1;
 	private int width, height, channel;
-	private Bitmap bmp, bmpFil, bmpGrayscale;
+	private Bitmap bmp, bmpFil;
 	private boolean bmpValid, grayValid;
 	private float[] colorMatrix;
-	private static final String TAG = "ScaleChannel";
+	//private static final String TAG = "ScaleChannel";
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -128,7 +126,7 @@ public class FilterActivity extends Activity implements OnItemSelectedListener{
 					paint.setColorFilter(filter);
 					//c.drawBitmap(bmpGrayscale, 0, 0, paint);
 					c.drawBitmap(bmp, 0, 0, paint);
-					scaleChannel(bmpFil);
+					//scaleChannel(bmpFil);
 					ImageView imageView = (ImageView) findViewById(R.id.imageView);
 					imageView.setImageBitmap(Bitmap.createScaledBitmap(bmpFil, 1500, 1500, false));
 					grayValid = true;
@@ -223,9 +221,9 @@ public class FilterActivity extends Activity implements OnItemSelectedListener{
 			imageView.setImageBitmap(Bitmap.createScaledBitmap(bmp, 1500, 1500, false));
 			width = bmp.getWidth();
 			height = bmp.getHeight();
-			Log.v(TAG, "original Values begin");
-			scaleChannel(bmp);
-			Log.v(TAG, "original Values end");
+			//Log.v(TAG, "original Values begin");
+			//scaleChannel(bmp);
+			//Log.v(TAG, "original Values end");
 			bmpValid = true;
 			if(grayValid){
 				//bmpGrayscale.recycle();
@@ -238,7 +236,7 @@ public class FilterActivity extends Activity implements OnItemSelectedListener{
 	private int getBytes(int original) {
 		String hexBytes = Integer.toHexString(original);
 		//String hexBytes = Long.toHexString(original);
-		Log.v(TAG, "HexBytes: " + hexBytes);
+		//Log.v(TAG, "HexBytes: " + hexBytes);
 		int hex=0;
 		switch (channel){
 		case 1:
@@ -246,7 +244,7 @@ public class FilterActivity extends Activity implements OnItemSelectedListener{
 			//Log.v(TAG, "Red Values: " + hex);
 			break;
 		case 2:
-			hex = Integer.parseInt(hexBytes.substring(hexBytes.length()-2),16);
+			hex = Integer.parseInt(hexBytes.substring(hexBytes.length()-4,hexBytes.length()-2),16);
 			//Log.v(TAG, "Green Values: " + hex);
 			break;
 		case 3:
@@ -276,6 +274,6 @@ public class FilterActivity extends Activity implements OnItemSelectedListener{
 					max = pix;
 			}
 		}
-		System.out.println("Max Pixel Color is " + max);
+		//Log.v(TAG,"Max Pixel Color is " + max + " for channel: " + channel);
 	}	
 }
